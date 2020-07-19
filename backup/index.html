@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Pass Password Vault</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="brand"><span>Super Pass</span> Vault</h1>
+      <div class="wrapper">
+        <div class="password-display">
+          <h3>New Password</h3>
+          <div class="alert">Your password has been added to the database</div>
+          <form id="passwordForm">
+            <p>
+              <label>Account Name</label>
+              <input type="text" name="name" id="name" required />
+            </p>
+            <p>
+              <label>Login Id</label>
+              <input type="text" name="loginId" id="loginId" required />
+            </p>
+            <p class="full">
+              <label>Password</label>
+              <input type="text" name="password" id="password" required />
+            </p>
+            <p class="full">
+              <button type="submit">Submit</button>
+            </p>
+          </form>
+        </div>
+        <div class="appInfo">
+          <h3>Super Pass v.1.0.0.0</h3>
+          <ul>
+            <li>Login</li>
+            <li>Home</li>
+            <li>Logout</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase.js"></script>
+    <script src="firebase.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
