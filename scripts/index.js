@@ -38,8 +38,10 @@ const setupList = (data) => {
       const password = doc.data();
       const li = `
         <li>
-            <div class="collapsible-header grey lighten-4"><strong>Account Name:</strong> ${password.account}</div>
-            <div class="collapsible-body white"><span><strong>Login Id:</strong> ${password.loginId}<p><strong>Password:</strong> ${password.password}</p></span></div>
+            <div class="collapsible-header grey lighten-4" style="margin-top: 15px;"><strong>Account Name:</strong> ${password.account}</div> 
+            <button class="fas fa-edit blue-text text-darken-2" id="btnedit" data-account="${password.account}" data-id="${doc.id}" data-password="${password.password}" data-login="${password.loginId}" style="padding: 5; border: none; cursor:pointer;">Edit</button></div>
+            <button class="fas fa-trash-alt red-text" id="btndelete" data-id="${doc.id}" style="padding: 5; border: none;cursor:pointer;">Delete</button></div>
+            <div class="collapsible-body white"><span><strong>Login Id:</strong>${password.loginId}<p><strong>Password:</strong> ${password.password}</p></span></div>
         </li>
       `;
       html += li;
@@ -49,6 +51,25 @@ const setupList = (data) => {
     passwordList.innerHTML = `<h5 class="center-align">Login or sign up to view your passwords.</h5>`;
   }
 };
+
+//edit and delete
+document.addEventListener("click", function (e) {
+  if (e.target.id == "btndelete") {
+    let id = e.target.dataset.id;
+    db.collection("passwords")
+      .doc(id)
+      .delete()
+      .then(() => {
+        console.log("deleted");
+      });
+  } else if (e.target.id == "btnedit") {
+    let name = e.target.dataset.account;
+    let login = e.target.dataset.login;
+    let pswd = e.target.dataset.password;
+
+    console.log(name + " " + login + " " + pswd);
+  }
+});
 
 //generate a password
 //modal elements
@@ -133,3 +154,10 @@ document.addEventListener("DOMContentLoaded", function () {
   var items = document.querySelectorAll(".collapsible");
   M.Collapsible.init(items);
 });
+
+// function deletebtn(event) {
+//   let id = parseInt(event.target.dataset.id);
+
+//   db.accounts.delete(id);
+//   table();
+// }
